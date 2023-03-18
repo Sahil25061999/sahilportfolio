@@ -1,0 +1,36 @@
+.menu {
+  position: fixed;
+  pointer-events: none;
+  z-index: 990;
+  top: -20rem;
+  right: 0;
+  height: 150vh;
+  width: 100%;
+  //   backdrop-filter: brightness(80%);
+  font-size: 8rem;
+  display: flex;
+  justify-content: end;
+  opacity: 0;
+
+  &__list {
+    pointer-events: auto;
+    height: 100%;
+    background-color: var(--secondary-color);
+    width: min(100%, 50rem);
+    clip-path: circle(50% at 100% 50%);
+    transform: translateX(100%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    li {
+      transform: translateX(50%);
+    }
+  }
+}
+
+.menu[data-open='true'] {
+  pointer-events: fill;
+  user-select: auto;
+}

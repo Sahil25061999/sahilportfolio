@@ -1,0 +1,111 @@
+.projects {
+  //   background-color: var(--accent-color);
+  // margin-top: -10%;
+  height: 100vh;
+
+  padding-block: 2rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  grid-template-columns: auto;
+  grid-template-rows: auto repeat(2, 1fr);
+
+  &__heading {
+    grid-column: 1/13;
+    .horizontal__line {
+      display: inline-block;
+      height: 1px;
+      width: 100%;
+      background-color: black;
+    }
+  }
+
+  &__project {
+    overflow: hidden;
+    position: relative;
+    border-radius: 6rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    transition: 0.2s ease-in-out;
+
+    &__background {
+      user-select: none;
+      pointer-events: none;
+      height: 100%;
+      border-radius: inherit;
+
+      top: 0;
+      left: 0;
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+      transform-origin: left;
+      transition: 0.5s ease-out;
+      transition-delay: 0.2s;
+      // filter: saturate(0);
+
+      img {
+        object-fit: cover;
+      }
+    }
+    &:hover {
+      transform: scale(0.98);
+      .projects__project__background {
+        opacity: 0.34;
+        filter: brightness(30%);
+      }
+    }
+
+    &__title {
+      position: relative;
+      display: inherit;
+      justify-content: center;
+      align-items: baseline;
+      padding-right: 4rem;
+      font-size: 8rem;
+      font-weight: normal;
+      // mix-blend-mode: overlay;
+      &::before {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background-color: var(--font-color-primary);
+        position: absolute;
+        // top: 0;
+        transform-origin: left;
+        bottom: 1.5rem;
+        transition: transform 0.5s ease-in-out;
+        transform: scaleX(0);
+        // left: 0;
+      }
+      &:hover::before {
+        transform: scaleX(1);
+      }
+
+      span {
+        // display: none;
+        height: 4.5rem;
+        margin-left: 1rem;
+        svg {
+          fill: var(--font-color-primary);
+        }
+      }
+    }
+  }
+
+  &__project:nth-child(2) {
+    grid-column: 1 / 9;
+    background-color: var(--secondary-color);
+  }
+
+  &__project:nth-child(3) {
+    grid-column: 9 / 13;
+    background-color: var(--accent-color);
+  }
+  &__project:last-child {
+    grid-column: 1 / 13;
+    background-color: var(--ternary-color);
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "sahil-portfolio-v1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "get-image-colors": "^1.1.1",
+    "locomotive-scroll": "^4.1.4"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sahil25061999/sahilportfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sahil25061999/sahilportfolio/issues"
+  },
+  "homepage": "https://github.com/Sahil25061999/sahilportfolio#readme",
+  "description": ""
+}

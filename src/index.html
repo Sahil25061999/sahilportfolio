@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/dist/locomotive.css" />
+    <link rel="stylesheet" href="/dist/styles.css" />
+    <title>Sahil portfolio</title>
+  </head>
+  <body>
+    <div class="cursorContainer">
+      <div class="cursorContainer__cursor">
+        <span class="cursor__link__icon"
+          ><svg
+            class="arrow"
+            width="480"
+            height="481"
+            viewBox="0 0 480 481"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="arrow">
+              <rect id="Rectangle 2" width="480" height="120" />
+              <rect
+                id="Rectangle 3"
+                x="360"
+                y="480"
+                width="480"
+                height="120"
+                transform="rotate(-90 360 480)"
+              />
+              <rect
+                id="Rectangle 4"
+                y="395.411"
+                width="480"
+                height="120"
+                transform="rotate(-45 0 395.411)"
+              />
+            </g></svg
+        ></span>
+      </div>
+    </div>
+
+    <div class="preloader">
+      <div class="preloader__rows row1"></div>
+      <div class="preloader__rows row2">
+        <div class="preloader__rows__logo">
+          <h1>s</h1>
+          <h1>a</h1>
+          <h1>h</h1>
+          <h1>i</h1>
+          <h1>l</h1>
+        </div>
+      </div>
+      <div class="preloader__rows row3"></div>
+    </div>
+    <aside class="menu" data-open="false">
+      <ul class="menu__list">
+        <li>Home</li>
+        <li>Work</li>
+        <li>About</li>
+      </ul>
+    </aside>
+
+    <main data-scroll-container="">
+      <nav class="navbar">
+        <div class="navbar__logo"><h1>sahil.</h1></div>
+        <button class="navbar__menu__btn interactable">
+          <div>
+            <div class="menu__text">
+              <span class="menu__text__open">Menu</span
+              ><span class="menu__text__close">Close</span>
+            </div>
+          </div>
+          <span class="menu__icon">
+            <svg
+              width="104"
+              height="28"
+              viewBox="0 0 104 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Group 1">
+                <circle r="6px" id="Ellipse1" cx="30" />
+                <circle r="6px" id="Ellipse2" cx="52" />
+                <circle r="6px" id="Ellipse3" cx="75" />
+                <circle r="6px" id="Ellipse4" cx="52" />
+                <circle r="6px" id="Ellipse5" cx="52" />
+              </g>
+            </svg>
+          </span>
+        </button>
+      </nav>
+      <header class="header" data-scroll-section="">
+        <!-- <svg
+          class="ellipse"
+          viewBox="0 0 654 654"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g filter="url(#filter0_f_14_19)">
+            <circle
+              cx="327"
+              cy="327"
+              r="286"
+              fill="url(#paint0_linear_14_19)"
+            />
+          </g>
+          <defs>
+            <filter
+              id="filter0_f_14_19"
+              x="0"
+              y="0"
+              width="654"
+              height="654"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB"
+            >
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend
+                mode="normal"
+                in="SourceGraphic"
+                in2="BackgroundImageFix"
+                result="shape"
+              />
+            </filter>
+            <linearGradient
+              id="paint0_linear_14_19"
+              x1="327"
+              y1="41"
+              x2="565"
+              y2="565"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#2C4DF5" />
+              <stop
+                offset="0.423077"
+                stop-color="#9979F3"
+                stop-opacity="0.576923"
+              />
+              <stop offset="1" stop-color="#A9F0FF" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+        </svg> -->
+        <svg
+          class="header__background"
+          viewBox="0 0 1928 1183"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M144 438C160.667 474.667 224 512.8 344 372C494 196 702 -86 828 34C954 154 -36 576 6.00002 776C48 976 432 916 1012 530C1592 144 1988 53.9999 1756 372C1524 690 190 884 192 1076C194 1268 854 1178 1268 892C1682 606 2106 620 1840 792C1574 964 1436 982 1368 1050"
+            stroke="#CEBFFA"
+          />
+        </svg>
+        <div class="header__intro__container">
+          <div class="header__intro foreground interactable">
+            <!-- FrontEnd Developer, UI designer, Kabhi Kabhi artist. -->
+          </div>
+          <h1 class="header__intro header__intro__background interactable">
+            Hi I am Sahil.
+          </h1>
+          <p class="header__intro__subtext">FrontEnd Developer, UI designer</p>
+        </div>
+        <div class="header__social interactable">
+          <span class="header__social__icon">
+            <span class="fa-brands fa-instagram"></span
+          ></span>
+          <span class="header__social__icon"
+            ><span class="fa-brands fa-linkedin-in"></span
+          ></span>
+          <span class="header__social__icon"
+            ><span class="fa-brands fa-behance"></span
+          ></span>
+        </div>
+      </header>
+
+      <section class="projects" data-scroll-section="">
+        <p class="projects__heading">WORK</p>
+        <div class="projects__project">
+          <div class="projects__project__background">
+            <img src="assests/artStudio.png" alt="" />
+          </div>
+          <h1 class="projects__project__title">
+            ArtStudio
+            <span>
+              <svg
+                class="arrow"
+                width="481"
+                height="481"
+                viewBox="0 0 481 481"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="arrow">
+                  <rect
+                    id="Rectangle 2"
+                    x="1"
+                    width="480"
+                    height="78"
+                    fill="black"
+                  />
+                  <rect
+                    id="Rectangle 3"
+                    x="403"
+                    y="480"
+                    width="480"
+                    height="78"
+                    transform="rotate(-90 403 480)"
+                    fill="black"
+                  />
+                  <rect
+                    id="Rectangle 4"
+                    x="0.205688"
+                    y="425.206"
+                    width="546.177"
+                    height="78"
+                    transform="rotate(-45 0.205688 425.206)"
+                    fill="black"
+                  />
+                </g>
+              </svg>
+            </span>
+          </h1>
+        </div>
+        <div class="projects__project">
+          <div class="projects__project__background">
+            <h1 class="project__background__description">ecommerce</h1>
+            <!-- <img src="assests/bijutsu.png" alt="" /> -->
+          </div>
+          <h1 class="projects__project__title">
+            Bijutsu<span>
+              <svg
+                class="arrow"
+                width="481"
+                height="481"
+                viewBox="0 0 481 481"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="arrow">
+                  <rect
+                    id="Rectangle 2"
+                    x="1"
+                    width="480"
+                    height="78"
+                    fill="black"
+                  />
+                  <rect
+                    id="Rectangle 3"
+                    x="403"
+                    y="480"
+                    width="480"
+                    height="78"
+                    transform="rotate(-90 403 480)"
+                    fill="black"
+                  />
+                  <rect
+                    id="Rectangle 4"
+                    x="0.205688"
+                    y="425.206"
+                    width="546.177"
+                    height="78"
+                    transform="rotate(-45 0.205688 425.206)"
+                    fill="black"
+                  />
+                </g>
+              </svg>
+            </span>
+          </h1>
+        </div>
+        <div class="projects__project">
+          <div class="projects__project__background">
+            <!-- <img src="assests/takenotes.png" alt="" /> -->
+          </div>
+          <h1 class="projects__project__title">
+            Take Notes<span>
+              <svg
+                class="arrow"
+                width="481"
+                height="481"
+                viewBox="0 0 481 481"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="arrow">
+                  <rect
+                    id="Rectangle 2"
+                    x="1"
+                    width="480"
+                    height="78"
+                    fill="black"
+                  />
+                  <rect
+                    id="Rectangle 3"
+                    x="403"
+                    y="480"
+                    width="480"
+                    height="78"
+                    transform="rotate(-90 403 480)"
+                    fill="black"
+                  />
+                  <rect
+                    id="Rectangle 4"
+                    x="0.205688"
+                    y="425.206"
+                    width="546.177"
+                    height="78"
+                    transform="rotate(-45 0.205688 425.206)"
+                    fill="black"
+                  />
+                </g>
+              </svg>
+            </span>
+          </h1>
+        </div>
+      </section>
+
+      <footer data-scroll-section="">
+        <h1>Meow</h1>
+      </footer>
+    </main>
+
+    <!-----------------------SCRIPT--------------------------------------------->
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+      defer
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/CustomEase.min.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/CSSRulePlugin.min.js"
+      integrity="sha512-TJiE9joKYXjdf5nd0Kkzqt9QOYfp5Hk5W/PaeRmpOd7HYBVdSqpTxJezbfLzJnPrS7HGnalR54WO/hbppgDgkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script type="module" defer src="js/index.js"></script>
+  </body>
+</html>

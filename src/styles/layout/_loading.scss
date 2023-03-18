@@ -1,0 +1,48 @@
+.preloader {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+  transform: scaleX(1);
+  transform-origin: left;
+
+  &__rows {
+    height: calc(100vh / 3);
+    background-color: var(--accent-color);
+    transform: scaleX(1);
+    transform-origin: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+
+    &__logo {
+      display: flex;
+      h1 {
+        opacity: 1;
+        font-size: 5rem;
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+      }
+    }
+  }
+
+  // &__rows:last-child {
+
+  //   h1 {
+  //     font-size: 20rem;
+  //     font-style: italic;
+  //   }
+  // }
+
+  // &__rows__percentage {
+  //   background-color: aqua;
+  //   position: relative;
+
+  //   .percentage__units {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 5rem;
+  //   }
+  // }
+}
