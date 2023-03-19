@@ -1,13 +1,13 @@
 const navKeyCode = {
   ArrowUp: 1,
-  ArrowDown: 01,
-  ArrowRight: 01,
-  ArrowLeft: 01,
-  ' ': 01,
-  PageUp: 01,
-  PageDown: 01,
-  Home: 01,
-  End: 01,
+  ArrowDown: 1,
+  ArrowRight: 1,
+  ArrowLeft: 1,
+  ' ': 1,
+  PageUp: 1,
+  PageDown: 1,
+  Home: 1,
+  End: 1,
 };
 const supportsPassive = { passive: false };
 
@@ -36,10 +36,12 @@ function preventingDefault(e) {
 function preventingDefaultForKey(e) {
   if (navKeyCode[e.key]) {
     preventingDefault(e);
+    console.log(navKeyCode[e.key]);
   }
 }
 
 export const disableScroll = () => {
+  window.addEventListener('keydown', (e) => console.log(e.key));
   window.addEventListener('keydown', preventingDefaultForKey, false);
   window.addEventListener('wheel', preventingDefault, checkPassive);
   window.addEventListener('touchmove', preventingDefault, checkPassive);
@@ -48,5 +50,5 @@ export const disableScroll = () => {
 export const enableScroll = () => {
   window.removeEventListener('keydown', preventingDefaultForKey, false);
   window.removeEventListener('wheel', preventingDefault, checkPassive);
-  window.addEventListener('touchmove', preventingDefault, checkPassive);
+  window.removeEventListener('touchmove', preventingDefault, checkPassive);
 };

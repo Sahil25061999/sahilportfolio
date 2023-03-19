@@ -22,10 +22,10 @@
     justify-content: center;
 
     .cursor__link__icon {
-      // font-weight: 100;
       display: none;
       transform: scale(0.5);
-      fill: var(--font-color-secondary);
+
+      // fill: invert($color: var(--secondary-color));
     }
     .cursor__link__icon.visible {
       display: inline;

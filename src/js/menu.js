@@ -10,7 +10,7 @@ menuButton.addEventListener('click', () => {
   if (menu.dataset.open === 'false') {
     menu.dataset.open = 'true';
     menuOpen();
-    disableScroll();
+
     tl.to(menuText, { y: '-2rem', duration: 0.2 });
     // .to(
     //   '.menu__text__open',
@@ -23,7 +23,7 @@ menuButton.addEventListener('click', () => {
   } else {
     menu.dataset.open = 'false';
     menuClose();
-    enableScroll();
+
     tl.to(menuText, { y: '1', duration: 0.2 });
     // .to(
     //   '.menu__text__close',
@@ -49,10 +49,10 @@ menuList.addEventListener('click', (e) => {
 
 const menuOpen = () => {
   const tl = gsap.timeline();
-  tl.to('.menu', { opacity: 1, duration: 0.2 })
-    .to('.menu__list', { x: 0, duration: 0.5 })
+  tl.to('.menu', { onStart: () => disableScroll(), opacity: 1, duration: 0.2 })
+    .to('.menu__list__container', { x: 0, duration: 0.5, ease: Power4.inOut })
     .to(
-      '.menu__list',
+      '.menu__list__container',
       {
         duration: 0.7,
         // scale: 1,
@@ -66,6 +66,7 @@ const menuOpen = () => {
         x: 0,
         duration: 0.5,
         stagger: 0.1,
+        ease: Power4.inOut,
       },
       '-=.6'
     );
@@ -74,22 +75,23 @@ const menuOpen = () => {
 const menuClose = () => {
   const tl2 = gsap.timeline();
   tl2
-    .to('.menu__list', {
+    .to('.menu__list__container', {
+      onStart: () => enableScroll(),
       // borderRadius: 0,
       duration: 0.5,
       // scale: 1,
       'clip-path': 'circle(50% at 95% 50%)',
     })
-    .to('.menu__list', { x: 500, duration: 0.7 }, '-=.5')
+    .to('.menu__list__container', { x: 500, duration: 0.7 }, '-=.5')
 
     .to('.menu', { opacity: 0, duration: 0.1 }, '-=.32')
     .to(
       '.menu__list > li',
       {
-        x: 50,
+        x: 100,
         duration: 0.5,
         stagger: 0.1,
       },
-      '-=.6'
+      '-=1'
     );
 };

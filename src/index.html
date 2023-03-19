@@ -69,14 +69,20 @@
       <div class="preloader__rows row3"></div>
     </div>
     <aside class="menu" data-open="false">
-      <ul class="menu__list">
-        <li>Home</li>
-        <li>Work</li>
-        <li>About</li>
-      </ul>
+      <div class="menu__list__container">
+        <ul class="menu__list">
+          <li>Home</li>
+          <li>Work</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </div>
     </aside>
 
     <main data-scroll-container="">
+      <!------------------------------------------------------------------>
+      <!------------------------NAVBAR------------------------------------>
+      <!------------------------------------------------------------------>
       <nav class="navbar">
         <div class="navbar__logo"><h1>sahil.</h1></div>
         <button class="navbar__menu__btn interactable">
@@ -105,66 +111,17 @@
           </span>
         </button>
       </nav>
+      <!------------------------------------------------------------------>
+      <!--------------------------HEADER--------------------------------->
+      <!------------------------------------------------------------------>
       <header class="header" data-scroll-section="">
-        <!-- <svg
-          class="ellipse"
-          viewBox="0 0 654 654"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g filter="url(#filter0_f_14_19)">
-            <circle
-              cx="327"
-              cy="327"
-              r="286"
-              fill="url(#paint0_linear_14_19)"
-            />
-          </g>
-          <defs>
-            <filter
-              id="filter0_f_14_19"
-              x="0"
-              y="0"
-              width="654"
-              height="654"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-            </filter>
-            <linearGradient
-              id="paint0_linear_14_19"
-              x1="327"
-              y1="41"
-              x2="565"
-              y2="565"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#2C4DF5" />
-              <stop
-                offset="0.423077"
-                stop-color="#9979F3"
-                stop-opacity="0.576923"
-              />
-              <stop offset="1" stop-color="#A9F0FF" stop-opacity="0" />
-            </linearGradient>
-          </defs>
-        </svg> -->
         <svg
           class="header__background"
           viewBox="0 0 1928 1183"
-          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d="M144 438C160.667 474.667 224 512.8 344 372C494 196 702 -86 828 34C954 154 -36 576 6.00002 776C48 976 432 916 1012 530C1592 144 1988 53.9999 1756 372C1524 690 190 884 192 1076C194 1268 854 1178 1268 892C1682 606 2106 620 1840 792C1574 964 1436 982 1368 1050"
-            stroke="#CEBFFA"
           />
         </svg>
         <div class="header__intro__container">
@@ -176,7 +133,7 @@
           </h1>
           <p class="header__intro__subtext">FrontEnd Developer, UI designer</p>
         </div>
-        <div class="header__social interactable">
+        <!-- <div class="header__social interactable">
           <span class="header__social__icon">
             <span class="fa-brands fa-instagram"></span
           ></span>
@@ -186,18 +143,20 @@
           <span class="header__social__icon"
             ><span class="fa-brands fa-behance"></span
           ></span>
-        </div>
+        </div> -->
       </header>
-
+      <!------------------------------------------------------------------>
+      <!--------------------------PROJECTS--------------------------------->
+      <!------------------------------------------------------------------>
       <section class="projects" data-scroll-section="">
         <p class="projects__heading">WORK</p>
         <div class="projects__project">
-          <div class="projects__project__background">
+          <!-- <div class="projects__project__background">
             <img src="assests/artStudio.png" alt="" />
-          </div>
+          </div> -->
           <h1 class="projects__project__title">
             ArtStudio
-            <span>
+            <!-- <span>
               <svg
                 class="arrow"
                 width="481"
@@ -234,7 +193,7 @@
                   />
                 </g>
               </svg>
-            </span>
+            </span> -->
           </h1>
         </div>
         <div class="projects__project">
@@ -243,7 +202,8 @@
             <!-- <img src="assests/bijutsu.png" alt="" /> -->
           </div>
           <h1 class="projects__project__title">
-            Bijutsu<span>
+            Bijutsu
+            <!-- <span>
               <svg
                 class="arrow"
                 width="481"
@@ -280,7 +240,7 @@
                   />
                 </g>
               </svg>
-            </span>
+            </span> -->
           </h1>
         </div>
         <div class="projects__project">
@@ -288,7 +248,8 @@
             <!-- <img src="assests/takenotes.png" alt="" /> -->
           </div>
           <h1 class="projects__project__title">
-            Take Notes<span>
+            Take Notes
+            <!-- <span>
               <svg
                 class="arrow"
                 width="481"
@@ -324,7 +285,7 @@
                   />
                 </g>
               </svg>
-            </span>
+            </span> -->
           </h1>
         </div>
       </section>

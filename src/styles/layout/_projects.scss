@@ -1,8 +1,5 @@
 .projects {
-  //   background-color: var(--accent-color);
-  // margin-top: -10%;
   height: 100vh;
-
   padding-block: 2rem;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -71,7 +68,7 @@
         content: '';
         height: 2px;
         width: 100%;
-        background-color: var(--font-color-primary);
+        background-color: var(--font-color-secondary);
         position: absolute;
         // top: 0;
         transform-origin: left;

@@ -4,7 +4,7 @@ var imgLoad = imagesLoaded('elem');
 
 imgLoad.on('done', (instance) => {
   tl.to('.preloader__rows__logo h1', {
-    onStart: disableScroll,
+    onStart: () => disableScroll(),
     'clip-path': 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)',
     duration: 2,
     ease: Power3.easeInOut,
@@ -33,7 +33,7 @@ imgLoad.on('done', (instance) => {
     .to(
       '.navbar__logo,.navbar__menu__btn,.header__intro,.header__intro__subtext,.header__social',
       {
-        onEnd: enableScroll,
+        onEnd: () => enableScroll(),
         x: 0,
         // 'clip-path': 'polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)',
         'clip-path': 'polygon(100% -22.5%, -2.2% -20%, 0% 137.5%, 100% 140%)',

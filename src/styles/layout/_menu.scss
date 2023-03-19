@@ -6,26 +6,32 @@
   right: 0;
   height: 150vh;
   width: 100%;
-  //   backdrop-filter: brightness(80%);
+  backdrop-filter: brightness(80%);
   font-size: 8rem;
   display: flex;
   justify-content: end;
   opacity: 0;
-
-  &__list {
-    pointer-events: auto;
-    height: 100%;
-    background-color: var(--secondary-color);
+  &__list__container {
     width: min(100%, 50rem);
     clip-path: circle(50% at 100% 50%);
     transform: translateX(100%);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+  }
+
+  &__list {
+    pointer-events: auto;
+    width: calc(100% - 10rem);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     li {
-      transform: translateX(50%);
+      transform: translateX(100%);
     }
   }
 }
