@@ -10,7 +10,8 @@
 
   &__rows {
     min-height: calc(100vh / 3);
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     transform: scaleX(1);
     transform-origin: left;
   }

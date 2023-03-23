@@ -24,6 +24,7 @@
     .cursor__link__icon {
       display: none;
       transform: scale(0.5);
+      fill: var(--primary-color);
 
       // fill: invert($color: var(--secondary-color));
     }

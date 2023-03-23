@@ -1,0 +1,11 @@
+@mixin hoverEffect() {
+  display: block;
+  position: relative;
+  transform: translateY(0);
+
+  .hover__text {
+    position: absolute;
+    right: 0;
+    top: 100%;
+  }
+}

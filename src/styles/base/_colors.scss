@@ -1,22 +1,46 @@
-:root {
+@mixin color_pallete_blue_red() {
   --primary-color: #00235b;
   --secondary-color: #e21818;
   --accent-color: #ffdd83;
   --ternary-color: #98dfd6;
   --font-color-primary: hsl(0, 0%, 0%);
   --font-color-secondary: hsl(0, 0%, 100%);
-
-  // --primary-color: rgb(57, 55, 91);
-  // --secondary-color: rgb(116, 92, 151);
-  // --accent-color: rgb(213, 151, 206);
-  // --ternary-color: rgb(245, 176, 203);
-  // --font-color-primary: hsl(0, 0%, 0%);
-  // --font-color-secondary: hsl(0, 0%, 100%);
-
+}
+@mixin color_pallete_white_orange() {
   --primary-color: #fefbe9;
   --secondary-color: #e1eedd;
   --accent-color: #f0a04b;
   --ternary-color: #183a1d;
   --font-color-primary: hsl(0, 0%, 100%);
   --font-color-secondary: hsl(0, 0%, 0%);
+}
+
+//dark options
+
+@mixin color_pallete_darkgray_red() {
+  --primary-color: #272727;
+  --secondary-color: #eb5e55;
+  --accent-color: #eaeaea;
+  --ternary-color: #cbc5ea;
+  --font-color-primary: hsl(0, 0%, 0%);
+  --font-color-secondary: hsl(0, 0%, 100%);
+}
+
+@mixin color_pallete_darkgray_green() {
+  --primary-color: #272727;
+  --secondary-color: #deefb7;
+  --accent-color: #98dfaf;
+  --ternary-color: #5fb49c;
+  --font-color-primary: hsl(0, 0%, 0%);
+  --font-color-secondary: hsl(0, 0%, 100%);
+}
+
+@mixin color_pallete_black_white() {
+  --primary-color: #fcfff7;
+  --secondary-color: #000500;
+  --accent-color: #3b28cc;
+  --accent2-color: #fca311;
+  --accent3-color: #a188a6;
+  --font-color-primary: #000500;
+  --font-color-secondary: #fcfff7;
 }

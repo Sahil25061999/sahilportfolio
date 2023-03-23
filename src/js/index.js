@@ -1,20 +1,48 @@
 //LOCOMOTIVE SCROLL
 
 import LocomotiveScroll from 'locomotive-scroll';
-
-import './menu';
+import { disableScroll, enableScroll } from './disableScroll';
+import { menu, menuButton } from './menu';
+import './form';
 import './loading';
 
 var scroll = new LocomotiveScroll({
   el: document.querySelector('[data-scroll-container]'),
   smooth: true,
   multiplier: 1,
+  mobile: {
+    smooth: true,
+  },
+  tablet: {
+    smooth: true,
+  },
 });
 
-// scroll.on('scroll', (instance) => {
-//   let cursor = document.querySelector('.cursorContainer__cursor');
-//   cursor.style.top = instance.scroll.y + 'px';
-// });
+scroll.on('scroll', (instance) => {
+  const menuBtn = document.querySelector('.navbar__menu__btn');
+
+  menuBtn.setAttribute('style', 'transform:scale(0);opacity:0');
+  if (instance.scroll.y > 100) {
+    menuBtn.setAttribute('style', 'transform:scale(1);opacity:1');
+  } else {
+    menuBtn.setAttribute('style', 'transform:scale(0);opacity:0');
+  }
+});
+
+menuButton.addEventListener('click', () => {
+  if (menu.dataset.open === 'true') {
+    scroll.stop();
+  } else {
+    scroll.start();
+    enableScroll();
+  }
+});
+
+menu.addEventListener('click', () => {
+  if (menu.dataset.open === 'false') {
+    scroll.start();
+  }
+});
 
 // LOADING SCREEN
 
@@ -29,8 +57,8 @@ const getCursorStyle = (elementInteracted) => {
   switch (elementInteracted) {
     case 'interactable':
       return 0;
-    case 'header':
-      return 7;
+    // case 'header':
+    //   return 7;
     case 'project':
       return 2.8;
     default:
@@ -86,17 +114,24 @@ window.onmousemove = (e) => {
   const interactingHeader = interactedHeader !== null;
   headerClipAnimate(e, interactingHeader);
   if (interactingHeader) {
-    cursorAnimate(e, 'header');
+    cursorAnimate(e, 'interactable');
   }
 
   //PROJECT HOVER ANIMATION
 
   const interactedProject = e.target.closest('.projects__project');
   const interactingProjectTitle =
-    e.target.closest('.projects__project > h1') !== null;
+    e.target.closest('.projects__project  h1') !== null;
+  console.log();
+  const interactingProjectGithub = e.target.closest('.github__site') !== null;
+  const interactingProjectLink = e.target.closest('.live__site') !== null;
   const interactingProject = interactedProject !== null;
   if (interactingProject) {
-    if (!interactingProjectTitle) {
+    if (
+      !interactingProjectTitle &&
+      !interactingProjectGithub &&
+      !interactingProjectLink
+    ) {
       cursorLinkIcon.classList.add('visible');
     } else {
       cursorLinkIcon.classList.remove('visible');

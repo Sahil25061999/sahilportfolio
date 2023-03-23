@@ -1,38 +1,23 @@
 import { disableScroll, enableScroll } from './disableScroll';
 
-const menu = document.querySelector('.menu'); //menu container
-const menuList = document.querySelector('.menu__list'); //actual menu
-const menuButton = document.querySelector('.navbar__menu__btn');
+export const menu = document.querySelector('.menu'); //menu container
+const menuList = document.querySelector('.menu__list__container'); //actual menu
+export const menuButton = document.querySelector('.navbar__menu__btn');
+const menuIcon = document.querySelectorAll('.menu__bars *');
+const menuText = document.querySelector('.menu__text');
+const tl = gsap.timeline();
+
+console.log(menuIcon);
 
 menuButton.addEventListener('click', () => {
-  const menuText = document.querySelector('.menu__text');
-  const tl = gsap.timeline();
   if (menu.dataset.open === 'false') {
     menu.dataset.open = 'true';
     menuOpen();
-
     tl.to(menuText, { y: '-2rem', duration: 0.2 });
-    // .to(
-    //   '.menu__text__open',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   '-=.1'
-    // );
-    // gsap.to('.menu__text__close', { opacity: 1 });
   } else {
     menu.dataset.open = 'false';
     menuClose();
-
     tl.to(menuText, { y: '1', duration: 0.2 });
-    // .to(
-    //   '.menu__text__close',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   '-=.1'
-    // );
-    // gsap.to('.menu__text__open', { opacity: 1 });
   }
 });
 
@@ -40,6 +25,7 @@ menu.addEventListener('click', (e) => {
   if (menu.dataset.open === 'true') {
     menu.dataset.open = 'false';
     menuClose();
+    tl.to(menuText, { y: '1', duration: 0.2 });
   }
 });
 
@@ -55,7 +41,7 @@ const menuOpen = () => {
       '.menu__list__container',
       {
         duration: 0.7,
-        // scale: 1,
+        ease: Power4.inOut,
         'clip-path': 'circle(111.8% at 100% 50%)',
       },
       '-=.45'
@@ -70,19 +56,34 @@ const menuOpen = () => {
       },
       '-=.6'
     );
+  gsap.to(menuIcon[0], {
+    bottom: '2.9rem',
+    duration: 0.2,
+    rotate: 45,
+  });
+  gsap.to(menuIcon[1], { top: '2.9rem', duration: 0.2, rotate: -45 });
+  // gsap.to(menuIcon[0], { y: -5, duration: 0.2 });
+  // gsap.to(menuIcon[2], { y: 34, duration: 0.2 });
+  // gsap.to(menuIcon[3], { x: -20, y: 34, opacity: 1, duration: 0.2 });
+  // gsap.to(menuIcon[4], { x: 20, y: -5, opacity: 1, duration: 0.2 });
 };
 
 const menuClose = () => {
   const tl2 = gsap.timeline();
+
   tl2
-    .to('.menu__list__container', {
-      onStart: () => enableScroll(),
-      // borderRadius: 0,
-      duration: 0.5,
-      // scale: 1,
-      'clip-path': 'circle(50% at 95% 50%)',
-    })
-    .to('.menu__list__container', { x: 500, duration: 0.7 }, '-=.5')
+    .to('.menu__list__container', { x: 500, duration: 0.7 })
+    .to(
+      '.menu__list__container',
+      {
+        onStart: () => enableScroll(),
+
+        duration: 0.5,
+
+        'clip-path': 'circle(50% at 95% 50%)',
+      },
+      '-=.65'
+    )
 
     .to('.menu', { opacity: 0, duration: 0.1 }, '-=.32')
     .to(
@@ -94,4 +95,14 @@ const menuClose = () => {
       },
       '-=1'
     );
+  gsap.to(menuIcon[0], {
+    bottom: '2.5rem',
+    duration: 0.2,
+    rotate: 0,
+  });
+  gsap.to(menuIcon[1], { top: '2.5rem', duration: 0.2, rotate: 0 });
+  // gsap.to(menuIcon[0], { y: 15, duration: 0.2 });
+  // gsap.to(menuIcon[2], { y: 15, duration: 0.2 });
+  // gsap.to(menuIcon[3], { x: 0, y: 15, opacity: 0, duration: 0.2 });
+  // gsap.to(menuIcon[4], { x: 0, y: 15, opacity: 0, duration: 0.2 });
 };

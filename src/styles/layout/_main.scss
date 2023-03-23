@@ -1,4 +1,27 @@
 main {
-  width: min(100% - 20px, 140rem);
-  margin-inline: auto;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  & > div {
+    height: 100%;
+  }
+
+  // transform: translateY(100%);
 }
+
+header,
+section,
+footer {
+  margin-inline: auto;
+  width: min(100% - 40px, 140rem);
+  height: 100vh;
+  // height: 100%;
+  padding-block: 2rem;
+  // padding-block: 2rem;
+}
+
+// .spacer {
+//   background: var(--primary-color);
+//   height: 5rem;
+// }

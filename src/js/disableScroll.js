@@ -36,12 +36,10 @@ function preventingDefault(e) {
 function preventingDefaultForKey(e) {
   if (navKeyCode[e.key]) {
     preventingDefault(e);
-    console.log(navKeyCode[e.key]);
   }
 }
 
 export const disableScroll = () => {
-  window.addEventListener('keydown', (e) => console.log(e.key));
   window.addEventListener('keydown', preventingDefaultForKey, false);
   window.addEventListener('wheel', preventingDefault, checkPassive);
   window.addEventListener('touchmove', preventingDefault, checkPassive);

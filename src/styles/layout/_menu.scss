@@ -1,3 +1,4 @@
+@use '../abstracts/index' as h;
 .menu {
   position: fixed;
   pointer-events: none;
@@ -23,20 +24,31 @@
   }
 
   &__list {
-    pointer-events: auto;
     width: calc(100% - 10rem);
-
+    height: 100%;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     li {
+      color: var(--font-color-secondary);
       transform: translateX(100%);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      a {
+        transition: 1s transform cubic-bezier(0.075, 0.82, 0.165, 1);
+        @include h.hoverEffect();
+
+        &:hover {
+          transform: translateY(-100%);
+        }
+      }
     }
   }
 }
 
 .menu[data-open='true'] {
-  pointer-events: fill;
+  pointer-events: auto;
   user-select: auto;
 }
