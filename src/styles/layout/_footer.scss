@@ -1,21 +1,27 @@
 @use '../abstracts/index' as h;
 .footer__container {
-  z-index: 60;
+  z-index: -1;
   background-color: var(--accent-color);
   color: var(--font-color-secondary);
-  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   footer {
-    height: 100%;
     .about__heading {
-      padding-block: 2rem;
+      padding-block: 1.5rem;
     }
 
     .about__section {
+      min-height: max(100vh, 80rem);
       width: min(100%, 100rem);
       margin: auto;
       position: relative;
+
       display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 2rem;
 
       flex-wrap: wrap;
@@ -80,6 +86,7 @@
           & > p {
             display: flex;
             align-items: center;
+            mix-blend-mode: overlay;
 
             .line {
               margin-inline: 5px;
@@ -87,6 +94,7 @@
               height: 1px;
               width: 100%;
               background-color: var(--font-color-secondary);
+              mix-blend-mode: overlay;
             }
           }
 
@@ -115,7 +123,7 @@
                 width: 1.6rem;
                 border-radius: 50%;
                 padding: 1.6rem;
-                border: 2px solid var(--secondary-color);
+                border: 2px solid var(--primary-color);
                 transform: scale(0);
                 transition: transform 0.2s ease-in;
               }

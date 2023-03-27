@@ -2,23 +2,43 @@
 .navbar {
   margin-top: 1rem;
   position: absolute;
+  z-index: 1;
   width: 100%;
   top: 0;
   background: transparent;
-  &__logo {
-    flex: 1;
-  }
+  // opacity: 0;
 
   &__logo {
-    transform: translateX(2rem);
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    // flex: 1;
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.5);
+    opacity: 0;
+    svg {
+      height: 2.5rem;
+      margin-right: 1rem;
+    }
   }
+
+  // &__logo,
+  // &__list {
+  // transform: translateX(2rem);
+  // clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  // }
 
   &__list {
+    flex: 0.2;
     display: flex;
     justify-content: space-between;
 
     li {
+      transform: scale(0.5);
+      opacity: 0;
       overflow: hidden;
       margin-right: 2rem;
       &:last-child {
@@ -49,7 +69,7 @@
   opacity: 0;
   transform: scale(0);
   position: absolute;
-  top: 1.75rem;
+  // top: 1.75rem;
   right: 4vw;
   z-index: 998;
   background: transparent;

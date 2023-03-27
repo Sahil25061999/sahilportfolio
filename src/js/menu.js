@@ -7,8 +7,6 @@ const menuIcon = document.querySelectorAll('.menu__bars *');
 const menuText = document.querySelector('.menu__text');
 const tl = gsap.timeline();
 
-console.log(menuIcon);
-
 menuButton.addEventListener('click', () => {
   if (menu.dataset.open === 'false') {
     menu.dataset.open = 'true';
@@ -35,17 +33,17 @@ menuList.addEventListener('click', (e) => {
 
 const menuOpen = () => {
   const tl = gsap.timeline();
-  tl.to('.menu', { onStart: () => disableScroll(), opacity: 1, duration: 0.2 })
-    .to('.menu__list__container', { x: 0, duration: 0.5, ease: Power4.inOut })
-    .to(
-      '.menu__list__container',
-      {
-        duration: 0.7,
-        ease: Power4.inOut,
-        'clip-path': 'circle(111.8% at 100% 50%)',
-      },
-      '-=.45'
-    )
+  tl.to('.menu', {
+    onStart: () => disableScroll(),
+    opacity: 1,
+    duration: 0.2,
+  })
+    .to('.menu__list__container', {
+      x: 0,
+      duration: 0.5,
+      'clip-path': 'circle(130.8% at 100% 50%)',
+      ease: Power4.inOut,
+    })
     .to(
       '.menu__list > li',
       {
@@ -72,28 +70,20 @@ const menuClose = () => {
   const tl2 = gsap.timeline();
 
   tl2
-    .to('.menu__list__container', { x: 500, duration: 0.7 })
-    .to(
-      '.menu__list__container',
-      {
-        onStart: () => enableScroll(),
-
-        duration: 0.5,
-
-        'clip-path': 'circle(50% at 95% 50%)',
-      },
-      '-=.65'
-    )
-
+    .to('.menu__list__container', {
+      x: 500,
+      'clip-path': 'circle(50% at 95% 50%)',
+      duration: 0.7,
+    })
     .to('.menu', { opacity: 0, duration: 0.1 }, '-=.32')
     .to(
       '.menu__list > li',
       {
         x: 100,
-        duration: 0.5,
+        duration: 0.2,
         stagger: 0.1,
       },
-      '-=1'
+      '-=.8'
     );
   gsap.to(menuIcon[0], {
     bottom: '2.5rem',

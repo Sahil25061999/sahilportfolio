@@ -573,35 +573,42 @@ var scroll = new (0, _locomotiveScrollDefault.default)({
         smooth: true
     },
     tablet: {
-        smooth: true
+        smooth: true,
+        breakpoint: 0
     }
 });
+// document.addEventListener('DOMContentLoaded', (e) => {
+//   scroll.init();
+// });
 scroll.on("scroll", (instance)=>{
     const menuBtn = document.querySelector(".navbar__menu__btn");
-    menuBtn.setAttribute("style", "transform:scale(0);opacity:0");
     if (instance.scroll.y > 100) menuBtn.setAttribute("style", "transform:scale(1);opacity:1");
-    else menuBtn.setAttribute("style", "transform:scale(0);opacity:0");
+    else if ((0, _menu.menu).dataset.open === "false") menuBtn.setAttribute("style", "transform:scale(0);opacity:0");
 });
 (0, _menu.menuButton).addEventListener("click", ()=>{
     if ((0, _menu.menu).dataset.open === "true") scroll.stop();
-    else {
-        scroll.start();
-        (0, _disableScroll.enableScroll)();
-    }
+    else scroll.start();
 });
 (0, _menu.menu).addEventListener("click", ()=>{
     if ((0, _menu.menu).dataset.open === "false") scroll.start();
 });
-// LOADING SCREEN
+// DETECT TYPE OF DEVICE
+const isMobile = ()=>{
+    return navigator.maxTouchPoints > 0 && /Android|iPhone|iPad/i.test(navigator.userAgent);
+};
 // CURSOR ANIMATE FUNCTION
 const cursor = document.querySelector(".cursorContainer__cursor");
+if (isMobile()) {
+    console.log(ontouchstart in document);
+    cursor.style.display = "none";
+}
 const cursorLinkIcon = document.querySelector(".cursorContainer__cursor > span");
 const getCursorStyle = (elementInteracted)=>{
     switch(elementInteracted){
         case "interactable":
             return 0;
-        // case 'header':
-        //   return 7;
+        case "header":
+            return 7;
         case "project":
             return 2.8;
         default:
@@ -640,11 +647,10 @@ window.onmousemove = (e)=>{
     const interactedHeader = e.target.closest(".header__intro");
     const interactingHeader = interactedHeader !== null;
     headerClipAnimate(e, interactingHeader);
-    if (interactingHeader) cursorAnimate(e, "interactable");
+    if (interactingHeader) cursorAnimate(e, "header");
     //PROJECT HOVER ANIMATION
     const interactedProject = e.target.closest(".projects__project");
     const interactingProjectTitle = e.target.closest(".projects__project  h1") !== null;
-    console.log();
     const interactingProjectGithub = e.target.closest(".github__site") !== null;
     const interactingProjectLink = e.target.closest(".live__site") !== null;
     const interactingProject = interactedProject !== null;
@@ -3109,7 +3115,6 @@ const menuButton = document.querySelector(".navbar__menu__btn");
 const menuIcon = document.querySelectorAll(".menu__bars *");
 const menuText = document.querySelector(".menu__text");
 const tl = gsap.timeline();
-console.log(menuIcon);
 menuButton.addEventListener("click", ()=>{
     if (menu.dataset.open === "false") {
         menu.dataset.open = "true";
@@ -3149,12 +3154,9 @@ const menuOpen = ()=>{
     }).to(".menu__list__container", {
         x: 0,
         duration: 0.5,
+        "clip-path": "circle(130.8% at 100% 50%)",
         ease: Power4.inOut
-    }).to(".menu__list__container", {
-        duration: 0.7,
-        ease: Power4.inOut,
-        "clip-path": "circle(111.8% at 100% 50%)"
-    }, "-=.45").to(".menu__list > li", {
+    }).to(".menu__list > li", {
         x: 0,
         duration: 0.5,
         stagger: 0.1,
@@ -3179,19 +3181,16 @@ const menuClose = ()=>{
     const tl2 = gsap.timeline();
     tl2.to(".menu__list__container", {
         x: 500,
+        "clip-path": "circle(50% at 95% 50%)",
         duration: 0.7
-    }).to(".menu__list__container", {
-        onStart: ()=>(0, _disableScroll.enableScroll)(),
-        duration: 0.5,
-        "clip-path": "circle(50% at 95% 50%)"
-    }, "-=.65").to(".menu", {
+    }).to(".menu", {
         opacity: 0,
         duration: 0.1
     }, "-=.32").to(".menu__list > li", {
         x: 100,
-        duration: 0.5,
+        duration: 0.2,
         stagger: 0.1
-    }, "-=1");
+    }, "-=.8");
     gsap.to(menuIcon[0], {
         bottom: "2.5rem",
         duration: 0.2,
@@ -3246,12 +3245,12 @@ function preventingDefaultForKey(e) {
     if (navKeyCode[e.key]) preventingDefault(e);
 }
 const disableScroll = ()=>{
-    window.addEventListener("keydown", preventingDefaultForKey, false);
+    window.addEventListener("keypress", preventingDefaultForKey, false);
     window.addEventListener("wheel", preventingDefault, checkPassive);
     window.addEventListener("touchmove", preventingDefault, checkPassive);
 };
 const enableScroll = ()=>{
-    window.removeEventListener("keydown", preventingDefaultForKey, false);
+    window.removeEventListener("keypress", preventingDefaultForKey, false);
     window.removeEventListener("wheel", preventingDefault, checkPassive);
     window.removeEventListener("touchmove", preventingDefault, checkPassive);
 };
@@ -3261,38 +3260,68 @@ var _disableScroll = require("./disableScroll");
 const tl = gsap.timeline();
 var imgLoad = imagesLoaded("elem");
 imgLoad.on("done", (instance)=>{
-    tl.to(".preloader__rows__logo h1", {
-        onStart: ()=>(0, _disableScroll.disableScroll)(),
-        "clip-path": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-        duration: 2,
-        ease: Power3.easeInOut,
-        opacity: 0,
-        yoyo: true,
-        stagger: 0.4
-    }).to(".preloader__rows", {
-        scaleX: "0",
-        duration: 1,
-        stagger: {
-            each: 0.35,
-            from: "random",
-            ease: Power3.out
-        },
-        ease: Power4.easeInOut
+    // tl.to('.preloader__rows__logo h1', {
+    //   onStart: () => disableScroll(),
+    //   'clip-path': 'polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)',
+    //   duration: 2,
+    //   ease: Power3.easeInOut,
+    //   opacity: 0,
+    //   yoyo: true,
+    //   stagger: 0.4,
+    // })
+    //   .to('.preloader__rows', {
+    //     scaleX: '0',
+    //     duration: 1,
+    //     stagger: {
+    //       each: 0.35,
+    //       from: 'random',
+    //       ease: Power3.out,
+    //     },
+    //     ease: Power4.easeInOut,
+    //   })
+    //   .to(
+    //     '.preloader',
+    //     {
+    //       scaleX: '0',
+    //       duration: 1,
+    //     },
+    //     '-=1'
+    //   )
+    //   .to(
+    //     '.navbar__logo,.navbar__list ,.header__intro,.header__intro__subtext',
+    //     {
+    //       onEnd: () => enableScroll(),
+    //       x: 0,
+    //       // 'clip-path': 'polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)',
+    //       'clip-path': 'polygon(100% -22.5%, -2.2% -20%, 0% 137.5%, 100% 140%)',
+    //       duration: 0.5,
+    //       stagger: {
+    //         each: 0.15,
+    //         from: 'random',
+    //       },
+    //       ease: Power4.easeInOut,
+    //     },
+    //     '-=.8'
+    //   );
+    tl.to(".preloader", {
+        // onStart: () => disableScroll(),
+        // onEnd: () => enableScroll(),
+        duration: 1.5
     }).to(".preloader", {
-        scaleX: "0",
-        duration: 1
-    }, "-=1").to(".navbar__logo,.navbar__menu__btn,.header__intro,.header__intro__subtext,.header__social", {
-        onEnd: ()=>(0, _disableScroll.enableScroll)(),
-        x: 0,
-        // 'clip-path': 'polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%)',
-        "clip-path": "polygon(100% -22.5%, -2.2% -20%, 0% 137.5%, 100% 140%)",
-        duration: 0.5,
-        stagger: {
-            each: 0.15,
-            from: "random"
-        },
-        ease: Power4.easeInOut
-    }, "-=.8");
+        duration: 1.5,
+        // opacity: 0,
+        scale: 150
+    }, "-=.5").to(".preloader", {
+        duration: 0.2,
+        opacity: 0
+    }, "-=.4").to(".preloader", {
+        duration: 0,
+        display: "none "
+    }).to(".header__intro,.header__intro__subtext,.navbar__logo,.navbar__list > li ", {
+        duration: 0.2,
+        opacity: 1,
+        scale: 1
+    }, "-=.2");
 });
 
 },{"./disableScroll":"8tGsy"}],"l9hyy":[function(require,module,exports) {

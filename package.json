@@ -1,10 +1,9 @@
 {
   "name": "sahil-portfolio-v1",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html --dist-dir ./dist"
   },
   "author": "",
   "license": "ISC",

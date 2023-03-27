@@ -15,17 +15,23 @@ var scroll = new LocomotiveScroll({
   },
   tablet: {
     smooth: true,
+    breakpoint: 0,
   },
 });
+
+// document.addEventListener('DOMContentLoaded', (e) => {
+//   scroll.init();
+// });
 
 scroll.on('scroll', (instance) => {
   const menuBtn = document.querySelector('.navbar__menu__btn');
 
-  menuBtn.setAttribute('style', 'transform:scale(0);opacity:0');
   if (instance.scroll.y > 100) {
     menuBtn.setAttribute('style', 'transform:scale(1);opacity:1');
   } else {
-    menuBtn.setAttribute('style', 'transform:scale(0);opacity:0');
+    if (menu.dataset.open === 'false') {
+      menuBtn.setAttribute('style', 'transform:scale(0);opacity:0');
+    }
   }
 });
 
@@ -34,7 +40,7 @@ menuButton.addEventListener('click', () => {
     scroll.stop();
   } else {
     scroll.start();
-    enableScroll();
+    // enableScroll();
   }
 });
 
@@ -44,11 +50,22 @@ menu.addEventListener('click', () => {
   }
 });
 
-// LOADING SCREEN
+// DETECT TYPE OF DEVICE
+
+const isMobile = () => {
+  return (
+    navigator.maxTouchPoints > 0 &&
+    /Android|iPhone|iPad/i.test(navigator.userAgent)
+  );
+};
 
 // CURSOR ANIMATE FUNCTION
 
 const cursor = document.querySelector('.cursorContainer__cursor');
+if (isMobile()) {
+  console.log(ontouchstart in document);
+  cursor.style.display = 'none';
+}
 const cursorLinkIcon = document.querySelector(
   '.cursorContainer__cursor > span'
 );
@@ -57,8 +74,8 @@ const getCursorStyle = (elementInteracted) => {
   switch (elementInteracted) {
     case 'interactable':
       return 0;
-    // case 'header':
-    //   return 7;
+    case 'header':
+      return 7;
     case 'project':
       return 2.8;
     default:
@@ -114,7 +131,7 @@ window.onmousemove = (e) => {
   const interactingHeader = interactedHeader !== null;
   headerClipAnimate(e, interactingHeader);
   if (interactingHeader) {
-    cursorAnimate(e, 'interactable');
+    cursorAnimate(e, 'header');
   }
 
   //PROJECT HOVER ANIMATION
@@ -122,7 +139,7 @@ window.onmousemove = (e) => {
   const interactedProject = e.target.closest('.projects__project');
   const interactingProjectTitle =
     e.target.closest('.projects__project  h1') !== null;
-  console.log();
+
   const interactingProjectGithub = e.target.closest('.github__site') !== null;
   const interactingProjectLink = e.target.closest('.live__site') !== null;
   const interactingProject = interactedProject !== null;

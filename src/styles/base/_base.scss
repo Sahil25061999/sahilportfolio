@@ -1,27 +1,27 @@
 @use 'typography';
 @use 'colors' as c;
 
+:root {
+  // --font-size: clamp(1.2rem, 1.2vw + 1rem, 1.6rem);
+}
+
 html {
   font-size: 62.5%;
   @media only screen and (max-width: 62.5em) {
-    // tab-land
     font-size: 56.25%;
   }
 
   @media only screen and (max-width: 56.25em) {
-    // tab-port
     font-size: 54%;
   }
 
   @media only screen and (max-width: 37.5em) {
-    // phone
     font-size: 51%;
   }
 
-  // @media only screen and (min-width: 112.5em) {
-  // big desktop
-  // font-size: 75%; // 1rem = 12px, 12/16 = 75
-  // }
+  @media only screen and (min-width: 112.5em) {
+    font-size: 75%;
+  }
 }
 
 *,
@@ -38,9 +38,7 @@ body {
   font-family: var(--font-family);
   background-color: var(--primary-color);
   color: var(--font-color-primary);
-  font-size: 3vh;
-
-  // font-size: clamp(12px, 1vw + 1rem, 16px);
+  font-size: 1.6rem;
   // scroll-behavior: smooth;
 }
 

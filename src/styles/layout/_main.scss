@@ -1,13 +1,5 @@
 main {
-  min-height: 100vh;
   position: relative;
-  overflow: hidden;
-
-  & > div {
-    height: 100%;
-  }
-
-  // transform: translateY(100%);
 }
 
 header,
@@ -15,13 +7,15 @@ section,
 footer {
   margin-inline: auto;
   width: min(100% - 40px, 140rem);
-  height: 100vh;
-  // height: 100%;
-  padding-block: 2rem;
-  // padding-block: 2rem;
+  // min-height: max(100vh, 80rem);
+
+  padding-block: max(2vh, 2rem);
 }
 
-// .spacer {
-//   background: var(--primary-color);
-//   height: 5rem;
-// }
+.spacer {
+  background: var(--primary-color);
+  // height: 5rem;
+  @media screen and (max-width: 53.375em) {
+    // height: 2rem;
+  }
+}

@@ -2,19 +2,24 @@
 
 .contact__container {
   position: relative;
-  z-index: 64;
+
   background-color: var(--primary-color);
 }
 
 .contact {
-  // margin-block: 2rem;
-
   &__form {
-    height: 100%;
+    min-height: max(100vh, 80rem);
     display: grid;
     gap: 1rem;
     grid-template-columns: auto;
-    grid-template-rows: 0.1fr 0.185fr auto;
+    grid-template-rows: 0.15fr 0.2fr 1fr 0.2fr;
+    @media screen and (max-width: 53.375em) {
+      & {
+        grid-template-rows: 0.1fr repeat(2, 0.3fr) 1fr 0.2fr;
+        gap: 1rem;
+      }
+    }
+
     .contact__heading {
       padding-block: 1rem;
       grid-column: 1/13;
@@ -22,12 +27,17 @@
 
     &__inputs {
       border-radius: 4rem;
-      background-color: rgba(113, 113, 113, 0.1);
+      background-color: hsl(231.58deg 68.67% 83.73% / 33%);
 
       // display: flex;
       // justify-content: center;
       // align-items: center;
       overflow: hidden;
+
+      &:focus,
+      &:hover {
+        border: 1px solid var(--accent-color);
+      }
 
       div {
         width: 100%;
@@ -68,15 +78,9 @@
       }
       &:nth-child(4) {
         grid-column: 1 / 13;
-        grid-row: 3 / 10;
+        grid-row: 3;
       }
-
       @media screen and (max-width: 53.375em) {
-        & {
-          grid-template-rows: auto repeat(4, 1fr);
-          gap: 1rem;
-        }
-
         &:nth-child(2) {
           grid-column: 1/13;
           grid-row: 2;
@@ -87,7 +91,7 @@
         }
         &:nth-child(4) {
           grid-column: 1 / 13;
-          grid-row: 4 / 9;
+          grid-row: 4;
         }
       }
 
@@ -101,9 +105,14 @@
     &__btn {
       cursor: pointer;
       grid-column: 11/13;
+      grid-row: 4;
+      @media screen and (max-width: 53.375em) {
+        grid-row: 5;
+      }
 
       @media screen and (max-width: 33.375em) {
         grid-column: 1 / 13;
+        grid-row: 5;
       }
       width: 100%;
       min-width: 15rem;

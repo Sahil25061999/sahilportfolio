@@ -40,13 +40,13 @@ function preventingDefaultForKey(e) {
 }
 
 export const disableScroll = () => {
-  window.addEventListener('keydown', preventingDefaultForKey, false);
+  window.addEventListener('keypress', preventingDefaultForKey, false);
   window.addEventListener('wheel', preventingDefault, checkPassive);
   window.addEventListener('touchmove', preventingDefault, checkPassive);
 };
 
 export const enableScroll = () => {
-  window.removeEventListener('keydown', preventingDefaultForKey, false);
+  window.removeEventListener('keypress', preventingDefaultForKey, false);
   window.removeEventListener('wheel', preventingDefault, checkPassive);
   window.removeEventListener('touchmove', preventingDefault, checkPassive);
 };
