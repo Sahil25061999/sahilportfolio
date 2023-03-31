@@ -71,11 +71,9 @@ const menuClose = () => {
 
   tl2
     .to('.menu__list__container', {
-      x: 500,
       'clip-path': 'circle(50% at 95% 50%)',
       duration: 0.7,
     })
-    .to('.menu', { opacity: 0, duration: 0.1 }, '-=.32')
     .to(
       '.menu__list > li',
       {
@@ -83,8 +81,17 @@ const menuClose = () => {
         duration: 0.2,
         stagger: 0.1,
       },
+      '-=.2'
+    )
+    .to(
+      '.menu__list__container',
+      {
+        x: 500,
+        duration: 0.7,
+      },
       '-=.8'
-    );
+    )
+    .to('.menu', { opacity: 0, duration: 0.1 }, '-=.32');
   gsap.to(menuIcon[0], {
     bottom: '2.5rem',
     duration: 0.2,

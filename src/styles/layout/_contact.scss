@@ -12,7 +12,7 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: auto;
-    grid-template-rows: 0.15fr 0.2fr 1fr 0.2fr;
+    grid-template-rows: auto 0.2fr 1fr 0.2fr;
     @media screen and (max-width: 53.375em) {
       & {
         grid-template-rows: 0.1fr repeat(2, 0.3fr) 1fr 0.2fr;
@@ -21,7 +21,8 @@
     }
 
     .contact__heading {
-      padding-block: 1rem;
+      padding-top: 1.5rem;
+      padding-bottom: 0.8rem;
       grid-column: 1/13;
     }
 
