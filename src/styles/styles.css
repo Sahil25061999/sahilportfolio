@@ -341,7 +341,8 @@ footer {
 }
 
 .header__container {
-  background-color: var(--primary-color);
+  background: url("/src/assests/hero_gradient.svg") no-repeat;
+  background-size: cover;
   position: relative;
 }
 .header__container .header__background {
@@ -389,20 +390,20 @@ footer {
      object-fit: cover;
 }
 .header__intro__container {
-  text-align: center;
   flex: 1;
   position: relative;
   mix-blend-mode: color-dodge;
   mix-blend-mode: overlay;
 }
 .header__intro__container .header__intro {
-  font-weight: normal;
   transform: scale(0.5);
   opacity: 0;
+  font-size: clamp(4rem, 8vw + 1rem, 9rem);
+  font-weight: bolder !important;
 }
 .header__intro__container .header__intro__subtext {
   font-size: clamp(4rem, 2vw + 1rem, 6rem);
-  font-weight: bolder !important;
+  font-weight: 200;
   transform: scale(0.5);
   opacity: 0;
 }

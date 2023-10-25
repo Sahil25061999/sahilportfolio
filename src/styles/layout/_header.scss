@@ -1,7 +1,9 @@
 @use "sass:math";
 
 .header__container {
-  background-color: var(--primary-color);
+  // background-color: var(--primary-color);
+  background: url("/src/assests/hero_gradient.svg") no-repeat;
+  background-size: cover;
   position: relative;
   .header__background {
     position: absolute;
@@ -22,6 +24,7 @@
 .header {
   padding-block: 0;
   position: relative;
+  
 
   & > div {
     min-height: max(100vh, 40rem);
@@ -51,21 +54,25 @@
   }
 
   &__intro__container {
-    text-align: center;
+    // text-align: center;
+    
     flex: 1;
     position: relative;
     mix-blend-mode: color-dodge;
     mix-blend-mode: overlay;
 
     .header__intro {
-      font-weight: normal;
+      // font-weight: normal;
       transform: scale(0.5);
       opacity: 0;
+      font-size: clamp(4rem, 8vw + 1rem, 9rem);
+      font-weight: bolder !important;
     }
     .header__intro__subtext {
       // color: var(--accent-color);
       font-size: clamp(4rem, 2vw + 1rem, 6rem);
-      font-weight: bolder !important;
+      // font-weight: bolder !important;
+      font-weight: 200;
       transform: scale(0.5);
       opacity: 0;
     }

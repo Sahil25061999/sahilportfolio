@@ -359,7 +359,7 @@ header, section, footer {
 }
 
 .header__container {
-  background-color: var(--primary-color);
+  background: url("hero_gradient.ecdde181.svg") 0 0 / cover no-repeat;
   position: relative;
 }
 
@@ -410,7 +410,6 @@ header, section, footer {
 }
 
 .header__intro__container {
-  text-align: center;
   mix-blend-mode: color-dodge;
   mix-blend-mode: overlay;
   flex: 1;
@@ -419,15 +418,16 @@ header, section, footer {
 
 .header__intro__container .header__intro {
   opacity: 0;
-  font-weight: normal;
+  font-size: clamp(4rem, 8vw + 1rem, 9rem);
   transform: scale(.5);
+  font-weight: bolder !important;
 }
 
 .header__intro__container .header__intro__subtext {
   opacity: 0;
   font-size: clamp(4rem, 2vw + 1rem, 6rem);
+  font-weight: 200;
   transform: scale(.5);
-  font-weight: bolder !important;
 }
 
 .header__intro__container .foreground {
