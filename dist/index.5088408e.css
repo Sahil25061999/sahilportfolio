@@ -422,8 +422,8 @@ header, section, footer {
   color: var(--accent-color);
   opacity: 0;
   font-size: clamp(4rem, 2vw + 1rem, 6rem);
-  font-weight: normal;
   transform: scale(.5);
+  font-weight: bolder !important;
 }
 
 .header__intro__container .foreground {

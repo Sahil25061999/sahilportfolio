@@ -1,32 +1,27 @@
-@use 'sass:math';
+@use "sass:math";
 
 .header__container {
   background-color: var(--primary-color);
   position: relative;
   .header__background {
     position: absolute;
-
     width: max-content;
     margin-inline: auto;
     opacity: 0.3;
     user-select: none;
     pointer-events: none;
-    // z-index: -1;
     fill: none;
-    // opacity: 0;
     stroke: var(--accent-color);
     top: 0;
     transform: scale(1.2) rotate(45deg);
-    // @media screen and (max-width: 53) {
-    // }
+    display: none;
+    
   }
 }
 
 .header {
-  // background-color: inherit;
   padding-block: 0;
   position: relative;
-  // overflow: hidden;
 
   & > div {
     min-height: max(100vh, 40rem);
@@ -68,9 +63,9 @@
       opacity: 0;
     }
     .header__intro__subtext {
-      color: var(--accent-color);
+      // color: var(--accent-color);
       font-size: clamp(4rem, 2vw + 1rem, 6rem);
-      font-weight: normal;
+      font-weight: bolder !important;
       transform: scale(0.5);
       opacity: 0;
     }

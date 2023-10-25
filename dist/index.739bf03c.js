@@ -661,7 +661,7 @@ window.onmousemove = (e)=>{
     } else cursorLinkIcon.classList.remove("visible");
 };
 
-},{"locomotive-scroll":"iDXE3","./menu":"dTgwB","./loading":"2THKT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./form":"l9hyy","./disableScroll":"8tGsy"}],"iDXE3":[function(require,module,exports) {
+},{"locomotive-scroll":"iDXE3","./disableScroll":"8tGsy","./menu":"dTgwB","./form":"l9hyy","./loading":"2THKT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iDXE3":[function(require,module,exports) {
 /* locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Native", ()=>Native);
@@ -3103,7 +3103,55 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"dTgwB":[function(require,module,exports) {
+},{}],"8tGsy":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "disableScroll", ()=>disableScroll);
+parcelHelpers.export(exports, "enableScroll", ()=>enableScroll);
+const navKeyCode = {
+    ArrowUp: 1,
+    ArrowDown: 1,
+    ArrowRight: 1,
+    ArrowLeft: 1,
+    " ": 1,
+    PageUp: 1,
+    PageDown: 1,
+    Home: 1,
+    End: 1
+};
+const supportsPassive = {
+    passive: false
+};
+//for checking passive support
+try {
+    window.addEventListener("test", null, Object.defineProperty(supportsPassive, "passive", {
+        get: function() {
+            return true;
+        }
+    }));
+} catch (e) {}
+const checkPassive = supportsPassive["passive"] ? {
+    passive: false
+} : false;
+///////////////////////////////
+function preventingDefault(e) {
+    e.preventDefault();
+}
+function preventingDefaultForKey(e) {
+    if (navKeyCode[e.key]) preventingDefault(e);
+}
+const disableScroll = ()=>{
+    window.addEventListener("keypress", preventingDefaultForKey, false);
+    window.addEventListener("wheel", preventingDefault, checkPassive);
+    window.addEventListener("touchmove", preventingDefault, checkPassive);
+};
+const enableScroll = ()=>{
+    window.removeEventListener("keypress", preventingDefaultForKey, false);
+    window.removeEventListener("wheel", preventingDefault, checkPassive);
+    window.removeEventListener("touchmove", preventingDefault, checkPassive);
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dTgwB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "menu", ()=>menu);
@@ -3209,55 +3257,41 @@ const menuClose = ()=>{
 // gsap.to(menuIcon[4], { x: 0, y: 15, opacity: 0, duration: 0.2 });
 };
 
-},{"./disableScroll":"8tGsy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8tGsy":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "disableScroll", ()=>disableScroll);
-parcelHelpers.export(exports, "enableScroll", ()=>enableScroll);
-const navKeyCode = {
-    ArrowUp: 1,
-    ArrowDown: 1,
-    ArrowRight: 1,
-    ArrowLeft: 1,
-    " ": 1,
-    PageUp: 1,
-    PageDown: 1,
-    Home: 1,
-    End: 1
-};
-const supportsPassive = {
-    passive: false
-};
-//for checking passive support
-try {
-    window.addEventListener("test", null, Object.defineProperty(supportsPassive, "passive", {
-        get: function() {
-            return true;
-        }
-    }));
-} catch (e) {}
-const checkPassive = supportsPassive["passive"] ? {
-    passive: false
-} : false;
-///////////////////////////////
-function preventingDefault(e) {
-    e.preventDefault();
+},{"./disableScroll":"8tGsy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l9hyy":[function(require,module,exports) {
+const formInputName = document.querySelector("#name");
+const nameLabel = document.querySelector("#forName");
+const formInputEmail = document.querySelector("#email");
+const emailLabel = document.querySelector("#forEmail");
+const formInputDescription = document.querySelector("#description");
+const descriptionLabel = document.querySelector("#forDescription");
+const formBtn = document.querySelector(".contact__form__btn");
+const emailInner = emailLabel.innerHTML;
+const nameInner = nameLabel.innerHTML;
+const descriptionInner = descriptionLabel.innerHTML;
+// formBtn.addEventListener('click', (e) => {
+//   console.log(e);
+//   //   e.preventDefault();
+// });
+function labelEdit(e, currLabel, currInner) {
+    if (e.target.value.length) currLabel.innerHTML = "";
+    else currLabel.innerHTML = currInner;
 }
-function preventingDefaultForKey(e) {
-    if (navKeyCode[e.key]) preventingDefault(e);
-}
-const disableScroll = ()=>{
-    window.addEventListener("keypress", preventingDefaultForKey, false);
-    window.addEventListener("wheel", preventingDefault, checkPassive);
-    window.addEventListener("touchmove", preventingDefault, checkPassive);
+window.onload = ()=>{
+    formInputName.value = "";
+    formInputEmail.value = "";
+    formInputDescription.value = "";
 };
-const enableScroll = ()=>{
-    window.removeEventListener("keypress", preventingDefaultForKey, false);
-    window.removeEventListener("wheel", preventingDefault, checkPassive);
-    window.removeEventListener("touchmove", preventingDefault, checkPassive);
-};
+formInputEmail.addEventListener("change", (e)=>{
+    console.log(formInputEmail);
+    labelEdit(e, emailLabel, emailInner);
+});
+formInputEmail.addEventListener("click", ()=>{
+    console.log(formInputEmail);
+});
+formInputName.addEventListener("change", (e)=>labelEdit(e, nameLabel, nameInner));
+formInputDescription.addEventListener("change", (e)=>labelEdit(e, descriptionLabel, descriptionInner));
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2THKT":[function(require,module,exports) {
+},{}],"2THKT":[function(require,module,exports) {
 var _disableScroll = require("./disableScroll");
 const tl = gsap.timeline();
 var imgLoad = imagesLoaded("elem");
@@ -3326,40 +3360,6 @@ imgLoad.on("done", (instance)=>{
     }, "-=.2");
 });
 
-},{"./disableScroll":"8tGsy"}],"l9hyy":[function(require,module,exports) {
-const formInputName = document.querySelector("#name");
-const nameLabel = document.querySelector("#forName");
-const formInputEmail = document.querySelector("#email");
-const emailLabel = document.querySelector("#forEmail");
-const formInputDescription = document.querySelector("#description");
-const descriptionLabel = document.querySelector("#forDescription");
-const formBtn = document.querySelector(".contact__form__btn");
-const emailInner = emailLabel.innerHTML;
-const nameInner = nameLabel.innerHTML;
-const descriptionInner = descriptionLabel.innerHTML;
-// formBtn.addEventListener('click', (e) => {
-//   console.log(e);
-//   //   e.preventDefault();
-// });
-function labelEdit(e, currLabel, currInner) {
-    if (e.target.value.length) currLabel.innerHTML = "";
-    else currLabel.innerHTML = currInner;
-}
-window.onload = ()=>{
-    formInputName.value = "";
-    formInputEmail.value = "";
-    formInputDescription.value = "";
-};
-formInputEmail.addEventListener("change", (e)=>{
-    console.log(formInputEmail);
-    labelEdit(e, emailLabel, emailInner);
-});
-formInputEmail.addEventListener("click", ()=>{
-    console.log(formInputEmail);
-});
-formInputName.addEventListener("change", (e)=>labelEdit(e, nameLabel, nameInner));
-formInputDescription.addEventListener("change", (e)=>labelEdit(e, descriptionLabel, descriptionInner));
-
-},{}]},["gHDMI","ebWYT"], "ebWYT", "parcelRequire139b")
+},{"./disableScroll":"8tGsy"}]},["gHDMI","ebWYT"], "ebWYT", "parcelRequire139b")
 
 //# sourceMappingURL=index.739bf03c.js.map
